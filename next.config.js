@@ -1,4 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {};
 
-module.exports = nextConfig
+module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination:
+          "https://api.crunchbase.com/api/v4/searches/organizations/:path*",
+      },
+    ];
+  },
+};
