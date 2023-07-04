@@ -54,20 +54,24 @@ const List = () => {
                 onMouseLeave={() => handleRepoHover(null)}
               >
                 <span className="text-lg font-medium font-mono">
-                  {startup.name}
+                  <a href={startup.html_url} target="_blank">
+                    {startup.name}
+                  </a>
                 </span>
-                <a
-                  href={startup.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
-                >
-                  GitHub Repo
-                </a>
+                <span className="text-gray-500 ml-2">
+                  Stars: {formatStars(startup.stargazers_count)}
+                </span>
                 {hoveredRepo && hoveredRepo.id === startup.id && (
-                  <span className="text-gray-500 ml-2">
-                    Stars: {formatStars(hoveredRepo.stargazers_count)}
-                  </span>
+                  <>
+                    <a
+                      href={startup.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 hover:underline"
+                    >
+                      GitHub Repo
+                    </a>
+                  </>
                 )}
               </li>
             ))

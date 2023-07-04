@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_TOKEN = process.env.API_TOKEN;
-
+const API_TOKEN = "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";
 export const getOpenSourceStartups = async () => {
   try {
     const response = await axios.get(
