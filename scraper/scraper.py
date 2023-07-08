@@ -19,11 +19,15 @@
 # print('Complete')
 
 # Selenium Attempt
+import time
+import json
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-import time
-import json
+
+
+
 
 def webScrape() -> list:
     driver = webdriver.Chrome()
@@ -41,16 +45,23 @@ def webScrape() -> list:
     # Find all company names
     elements = driver.find_elements(By.CLASS_NAME, "CBY8yVfV0he1Zbv9Zwjx")
 
-    driver.quit()
 
     # print(f'Number of elements found: {len(elements)}') # -- confirmed: 1000 elements extracted
     # print(elements)
 
     # Aggregate all company names into list
     names = [e.text for e in elements]
-
+    
+    driver.quit()
+    
     return names
+
+def convertJSON(names: list) -> None:
+    with open('companyNames.json', 'w', encoding='utf-8') as f:
+        json.dump(names, f, ensure_ascii=False, indent=4)
 
 
 if __name__ == '__main__':
     companyNames = webScrape()
+    convertJSON(companyNames)
+
