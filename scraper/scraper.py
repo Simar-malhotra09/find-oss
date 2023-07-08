@@ -18,3 +18,16 @@
 #     print(companyName.text)
 # print('Complete')
 
+# Selenium Attempt
+from selenium import webdriver
+import json
+
+driver = webdriver.Chrome()
+driver.get("https://www.ycombinator.com/companies/")
+
+# The YC Startup Directory | Y Combinator
+print(driver.title)
+
+
+
+driver.quit()
