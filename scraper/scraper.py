@@ -1,3 +1,12 @@
+"""
+Perform web scraping on the Y Combinator website to retrieve startup company names and store them in a JSON file.
+
+Usage:
+1. python scraper.py
+
+Note: Respect politeness and avoid excessive requests that may overload the server.
+"""
+
 import time
 import json
 from selenium import webdriver
@@ -6,6 +15,7 @@ from selenium.webdriver.common.by import By
 
 
 def webScrape() -> list:
+    """Web scrape YCombinator to retrieve company names."""
     driver = webdriver.Chrome()
     driver.get("https://www.ycombinator.com/companies/")
 
@@ -24,6 +34,7 @@ def webScrape() -> list:
     return names
 
 def convertJSON(names: list) -> None:
+    """Convert list of company names to JSON file."""
     with open('companyNames.json', 'w', encoding='utf-8') as f:
         json.dump(names, f, ensure_ascii=False, indent=4)
 
