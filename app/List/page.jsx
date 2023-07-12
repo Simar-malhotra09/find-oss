@@ -34,10 +34,13 @@ const List = () => {
 
   /*Format starcount eg  2,612 => '2.6k' */
   const formatStars = (stargazersCount) => {
-    if (stargazersCount >= 1000) {
-      return `${(stargazersCount / 1000).toFixed(1)}k`;
+    if (stargazersCount) {
+      if (stargazersCount >= 1000) {
+        return `${(stargazersCount / 1000).toFixed(1)}k`;
+      }
+      return stargazersCount.toString();
     }
-    return stargazersCount.toString();
+    return "N/A"; // Return a default value if stargazersCount is undefined
   };
 
   /* Update pages with previous and next buttons*/
