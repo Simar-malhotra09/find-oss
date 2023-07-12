@@ -27,11 +27,11 @@ export const getOpenSourceStartups = async (page, perPage) => {
 /*export default async function getOpenSourceStartups() {
   try {
     const response1 = await axios.get("./companyNames.json");
-    const startupNames = response1.data; // Update variable name to startupNames
+    const startupNames = response1.data; 
 
-    // Iterate over the startup names
+
     for (const startupName of startupNames) {
-      // Make an API call to the GitHub API
+
       const response = await axios.get(
         "https://api.github.com/search/repositories",
         {
@@ -41,16 +41,14 @@ export const getOpenSourceStartups = async (page, perPage) => {
           },
           params: {
             q: startupName,
-            per_page: 10, // Number of results per page (adjust as needed)
+            per_page: 10, // Number of results per page 
             sort: "stars",
             order: "desc",
-            page: 1, // Page number (adjust as needed)
+            page: 1, // Page number 
           },
         }
       );
 
-      // Process the response as needed
-      // ... (add your logic here)
       console.log(response.data.items);
     }
   } catch (error) {
