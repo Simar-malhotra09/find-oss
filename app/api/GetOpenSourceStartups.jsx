@@ -1,20 +1,21 @@
 import axios from "axios";
 
 const API_TOKEN = "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";
-export const getOpenSourceStartups = async () => {
+export const getOpenSourceStartups = async (page, perPage) => {
   try {
     const response = await axios.get(
       "https://api.github.com/search/repositories",
       {
         headers: {
           Authorization: `Bearer ${API_TOKEN}`,
-          "content-type": "text/plain",
+          "Content-Type": "application/json",
         },
         params: {
           q: "cpp",
-          //sort: "stars",
-          //order: "desc",
-          page: 1,
+          per_page: perPage,
+          sort: "stars",
+          order: "desc",
+          page: page,
         },
       }
     );
@@ -25,6 +26,3 @@ export const getOpenSourceStartups = async () => {
     throw error;
   }
 };
-
-// This works for now I am getting the first page when
-// I look up cpp on github consistent with the api Get req.

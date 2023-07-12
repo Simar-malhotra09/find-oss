@@ -13,7 +13,7 @@ const Home = () => {
             Discover Open Source Startups and contribute to the future of
             innovation.
           </p>
-          <p className="mt-4 mb-6 text-gray-600">
+          <p className="mt-4 mb-6 text-gray-600 align-text-top">
             Find-OSS is a platform that brings together a curated collection of
             open source startups from various domains. Explore exciting
             projects, learn from the codebase, and contribute to their
