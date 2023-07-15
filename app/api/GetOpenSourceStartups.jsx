@@ -1,21 +1,24 @@
-import { Octokit } from "@octokit/core";
-
-const API_TOKEN = "";
-
-export const getOpenSourceStartups = async (page, perPage) => {
-  const octokit = new Octokit({
-    auth: `token ${API_TOKEN}`,
-    headers: {
-      "X-GitHub-Api-Version": "2022-11-28",
-    },
-  });
-
+import axios from "axios";
+//use postman to check api calls
+const API_TOKEN = "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";
+const companyNames = [];
+export const getOpenSourceStartups = async () => {
   try {
-    const response = await octokit.request("GET /search/users", {
-      q: "hasura",
-      per_page: perPage,
-      page: page,
-    });
+    const response = await axios.get(
+      "https://api.github.com/search/repositories",
+      {
+        headers: {
+          Authorization: `Bearer ${API_TOKEN}`,
+          "content-type": "text/plain",
+        },
+        params: {
+          q: "hasura",
+          sort: "stars",
+          order: "desc",
+          page: 1,
+        },
+      }
+    );
 
     return response.data.items;
   } catch (error) {
