@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { getOpenSourceStartups } from "@app/api/GetOpenSourceStartups";
 
 const List = () => {
-  const [startups, setStartups] = useState([]); // Hydrate orgs field
+  const [startups, setStartups] = useState([]); // Hydrate repo cards
   const [loading, setLoading] = useState(true); // Loading animation
   const [hoveredRepo, setHoveredRepo] = useState(null); // Display stars on hover
   const [currentPage, setCurrentPage] = useState(1); // Current page number
@@ -110,8 +110,8 @@ const List = () => {
             )}
           </ul>
 
-          {/* Redundecy condition check that need to be removed.  */}
-          {/* Don't want to display buttons when no orgs found */}
+          {/* Redundecy condition check that need to be removed for- */}
+          {/* not displaying buttons when no orgs found */}
           {startups && startups.length > 0 ? (
             <div className="flex justify-center mt-4">
               <button
