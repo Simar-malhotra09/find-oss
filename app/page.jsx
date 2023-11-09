@@ -1,9 +1,8 @@
-import React from "react";
-import "../styles/globals.css";
-import List from "./List/page";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import backgroundImage from "./assets/backgroundImage.jpeg";
+
+// Home page
 const Home = () => {
   return (
     <>
