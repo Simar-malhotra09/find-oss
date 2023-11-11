@@ -1,4 +1,5 @@
 const express = require("express");
+
 const cors = require("cors");
 const axios = require("axios");
 
@@ -22,15 +23,16 @@ app.get("/api", async (req, res) => {
         },
         params: {
           q: "google",
-          //q: "airbnb",
           sort: "stars",
           order: "desc",
+          per_page: 2,
           page: 1,
         },
       }
     );
 
     res.json(response.data.items);
+    console.log(response.data.items);
   } catch (error) {
     console.error("Error forwarding request to GitHub API:", error);
     res.status(500).json({ error: "Internal Server Error" });
